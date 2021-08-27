@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>CRUD SPRING BOOT</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/new}">Add New</a>
+    <table border="1">
+        <thead style="background-color: #5BA5EA">
+        <tr>
+            <th>#</th>
+            <th> NAMES</th>
+            <th> PHONE</th>
+            <th> ACTION</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p:${persons}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.telephone}"></td>
+            <td>
+                <a href="#" th:onclick="deletePerson([[${p.id}]])">delete</a>
+                <a th:href="@{/}+${p.id}">edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/functions.js"></script>
+</body>
+</html>
