@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/persons")
-public class PersonControler {
+public class PersonController {
     @Autowired
     private PersonService personService;
 
@@ -37,12 +40,24 @@ public class PersonControler {
     }
 
     @GetMapping("/new")
-    public String new(
-    Model model)
-
-    {
+    public String addNewPerson(Model model) {
         model.addAttribute("person", new Person());
         return "form";
+    }
+
+    @PostMapping
+    public String save(@Valid Person p) {
+        int id = personService.save(p);
+        if (id == 0) {
+            return "form";
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deletePerson(@PathVariable int id) {
+        personService.delete(id);
+        return "redirect:/";
     }
 
 }
