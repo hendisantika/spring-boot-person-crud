@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,5 +24,9 @@ public class PersonService {
 
     public List<Person> list() {
         return (List<Person>) personRepository.findAll();
+    }
+
+    public Optional<Person> findById(int id) {
+        return personRepository.findById(id);
     }
 }
