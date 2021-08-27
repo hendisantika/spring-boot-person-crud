@@ -1,8 +1,11 @@
 package com.hendisantika.springbootpersoncrud.service;
 
+import com.hendisantika.springbootpersoncrud.entity.Person;
 import com.hendisantika.springbootpersoncrud.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,4 +20,8 @@ import org.springframework.stereotype.Service;
 public class PersonService {
     @Autowired
     private PersonRepository personRepository;
+
+    public List<Person> list() {
+        return (List<Person>) personRepository.findAll();
+    }
 }
