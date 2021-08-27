@@ -29,4 +29,13 @@ public class PersonService {
     public Optional<Person> findById(int id) {
         return personRepository.findById(id);
     }
+
+    public int save(Person p) {
+        int res = 0;
+        Person per = personRepository.save(p);
+        if (!per.equals(null)) {
+            res = 1;
+        }
+        return res;
+    }
 }
