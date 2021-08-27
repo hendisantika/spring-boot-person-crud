@@ -1,5 +1,6 @@
 package com.hendisantika.springbootpersoncrud.controller;
 
+import com.hendisantika.springbootpersoncrud.entity.Person;
 import com.hendisantika.springbootpersoncrud.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,15 @@ public class PersonControler {
     @GetMapping("/{id}")
     public String findById(@PathVariable int id, Model model) {
         model.addAttribute("person", personService.findById(id));
+        return "form";
+    }
+
+    @GetMapping("/new")
+    public String new(
+    Model model)
+
+    {
+        model.addAttribute("person", new Person());
         return "form";
     }
 
