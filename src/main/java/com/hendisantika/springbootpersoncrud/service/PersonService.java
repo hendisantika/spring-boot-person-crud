@@ -38,4 +38,8 @@ public class PersonService {
         }
         return res;
     }
+
+    public void delete(int id) {
+        personRepository.deleteById(id);
+    }
 }
