@@ -51,13 +51,13 @@ public class PersonController {
         if (id == 0) {
             return "form";
         }
-        return "redirect:/";
+        return "redirect:/persons";
     }
 
     @GetMapping("/delete/{id}")
     public String deletePerson(@PathVariable int id) {
         personService.delete(id);
-        return "redirect:/";
+        return "redirect:/persons";
     }
 
 }
