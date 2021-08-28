@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <form method="POST" th:action="@{/}" th:object="${person}">
+    <form method="POST" th:action="@{/persons}" th:object="${person}">
         <div></div>
         <div>
             <div>
@@ -16,11 +16,11 @@
                 <label>FULL NAME</label> <input th:field="*{name}" type="text"/>
             </div>
             <div>
-                <label>TELEPHONE</label> <input th:field="*{telefono}" type="text"/>
+                <label>TELEPHONE</label> <input th:field="*{telephone}" type="text"/>
             </div>
         </div>
         <div>
-            <input type="submit" value="Submit"/> <a th:href="@{/}">Save</a>
+            <input type="submit" value="Submit"/> <a th:href="@{/persons}">List</a>
         </div>
     </form>
 </div>

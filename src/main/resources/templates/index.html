@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <a th:href="@{/new}">Add New</a>
+    <a th:href="@{/persons/new}">Add New</a>
     <table border="1">
         <thead style="background-color: #5BA5EA">
         <tr>
@@ -23,7 +23,7 @@
             <td th:text="${p.telephone}"></td>
             <td>
                 <a href="#" th:onclick="deletePerson([[${p.id}]])">delete</a>
-                <a th:href="@{/}+${p.id}">edit</a>
+                <a th:href="@{/persons/}+${p.id}">edit</a>
             </td>
         </tr>
         </tbody>

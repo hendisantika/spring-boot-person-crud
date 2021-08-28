@@ -10,7 +10,7 @@ function deletePerson(id) {
         .then((OK) => {
             if (OK) {
                 $.ajax({
-                    url: "/delete/" + id,
+                    url: "/persons/delete/" + id,
                     success: function (res) {
                         console.log(res);
                     },
@@ -19,7 +19,7 @@ function deletePerson(id) {
                     icon: "success",
                 }).then((ok) => {
                     if (ok) {
-                        location.href = "/";
+                        location.href = "/persons";
                     }
                 });
             }
