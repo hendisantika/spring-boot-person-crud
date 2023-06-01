@@ -2,15 +2,14 @@ package com.hendisantika.springbootpersoncrud.controller;
 
 import com.hendisantika.springbootpersoncrud.entity.Person;
 import com.hendisantika.springbootpersoncrud.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,9 +22,9 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/persons")
+@RequiredArgsConstructor
 public class PersonController {
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
 
     @GetMapping
     public String list(Model model) {

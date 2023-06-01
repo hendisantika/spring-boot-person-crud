@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="https://www.thymeleaf.org">>
+<html lang="en" xmlns="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -10,7 +10,8 @@
 
     <link href="https://getbootstrap.com/docs/5.1/examples/dashboard/" rel="canonical">
     <!-- Bootstrap core CSS -->
-    <link media="screen" rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}"/>
+    <link media="screen" rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link href="/webjars/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -136,7 +137,6 @@
             <div class="container">
                 <div>
                     <form class="form-horizontal" method="POST" th:action="@{/persons}" th:object="${person}">
-
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label">ID:</label>
                             <div class="col-sm-6">
@@ -155,7 +155,7 @@
                                 <input class="form-control" th:field="*{telephone}" type="text">
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary add" type="submit">Submit</button>
                         <button class="btn btn-info" type="reset">Reset</button>
                     </form>
                 </div>
@@ -164,7 +164,8 @@
     </div>
 </div>
 
-<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/jquery/dist/jquery.js}"></script>
 <script crossorigin="anonymous"
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
         src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
@@ -172,5 +173,39 @@
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
         src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script th:src="@{/js/dashboard.js}"></script>
+<script src="/webjars/sweetalert2/11.6.15/dist/sweetalert2.min.js"></script>
 </body>
+
+<script>
+    $(".add").click(function () {
+        Swal.fire({
+            title: "Add New Data",
+            text: "New Data saved successfully!",
+            showConfirmButton: false,
+            icon: 'success',
+            type: "success",
+            timer: 50000
+        })
+    });
+
+    $(".delete").click(function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.' + result.isConfirmed,
+                    'success'
+                )
+            }
+        })
+    });
+</script>
 </html>
