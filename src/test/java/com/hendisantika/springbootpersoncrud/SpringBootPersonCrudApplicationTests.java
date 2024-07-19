@@ -21,7 +21,7 @@ import java.util.List;
 @Testcontainers
 class SpringBootPersonCrudApplicationTests {
 	@Container
-	private static final MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.0.32");
+	private static final MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.4.0");
 	@Autowired
 	private PersonRepository personRepository;
 
