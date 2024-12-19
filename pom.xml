@@ -78,7 +78,7 @@
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>sweetalert2</artifactId>
-			<version>11.15.1</version>
+			<version>11.15.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
